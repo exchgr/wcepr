@@ -1,0 +1,25 @@
+{
+  "type": "module",
+  "scripts": {
+    "run": "node --loader ts-node/esm src/app.ts"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "hbs": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^5.2.2",
+    "@types/express": "^5.0.3",
+    "@types/hbs": "^4.0.5",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.5.2",
+    "@types/sinon": "^17.0.4",
+    "@types/supertest": "^6.0.3",
+    "chai": "^6.0.1",
+    "mocha": "^11.7.2",
+    "sinon": "^21.0.0",
+    "supertest": "^7.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
