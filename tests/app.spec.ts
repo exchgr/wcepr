@@ -1,14 +1,18 @@
-import { expect } from "chai"
+import { expect, use } from "chai"
 import { app } from "../src/app.ts"
-import request from "supertest"
+import chaiHttp, { request } from "chai-http"
 
-const requester = request(app)
+use(chaiHttp)
+
+const requester = request.execute(app)
 
 describe("app", () => {
 	describe("/feed.xml", () => {
 		it("should render", async () => {
-			const feed = await requester.get("/feed.xml")
-			expect(feed.text).to.eq('hello world!')
+			const response = await requester.get("/feed.xml")
+
+			expect(response.body.toString()).to.eq("hello world!")
+			expect(response).to.have.status(200)
 		})
 	})
 })
