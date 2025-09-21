@@ -1,16 +1,19 @@
-import express from 'express'
+import express from "express"
 
 export const app = express()
-const port = parseInt(process.env.EXPRESS_PORT || '3000')
+const port = parseInt(process.env.EXPRESS_PORT || "3000")
+
+app.set("view engine", "hbs")
+app.set("views", "src/views")
 
 app.use((req, _res, next) => {
 	console.log(`${new Date().toISOString()} ${req.method} ${req.originalUrl}`)
 	next()
 })
 
-app.get('/feed.xml', (req, res) => {
+app.get("/feed.xml", (req, res) => {
 	res.setHeader("Content-Type", "application/rss+xml")
-	res.send("hello world!")
+	res.render("feed.xml.hbs")
 })
 
 app.listen(port, () => {

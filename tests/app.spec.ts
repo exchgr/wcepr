@@ -11,8 +11,12 @@ describe("app", () => {
 		it("should render", async () => {
 			const response = await requester.get("/feed.xml")
 
-			expect(response.body.toString()).to.eq("hello world!")
+			expect(response.body.toString()).to.eq("hello world!\n")
 			expect(response).to.have.status(200)
+			expect(response).to.have.header(
+				"Content-Type",
+				"application/rss+xml; charset=utf-8",
+			)
 		})
 	})
 })
