@@ -1,7 +1,10 @@
 import express from "express"
+import hbs from "hbs"
 
 export const app = express()
 const port = parseInt(process.env.EXPRESS_PORT || "3000")
+
+hbs.registerPartials("src/views/partials")
 
 app.set("view engine", "hbs")
 app.set("views", "src/views")

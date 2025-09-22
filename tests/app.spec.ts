@@ -1,6 +1,6 @@
 import { expect, use } from "chai"
-import { app } from "../src/app.ts"
 import chaiHttp, { request } from "chai-http"
+import { app } from "../src/app.ts"
 
 use(chaiHttp)
 
@@ -24,7 +24,8 @@ describe("app", () => {
   <link href="https://en.wikipedia.org/wiki/Portal:Current_events"/>
   <updated>${date.toISOString()}</updated>
   <id>https://en.wikipedia.org/wiki/Portal:Current_events</id>
-  <entry></entry>
+  <entry>
+  </entry>
 </feed>
 `)
 			expect(response).to.have.status(200)

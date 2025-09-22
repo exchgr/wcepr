@@ -1,25 +1,28 @@
 {
-  "type": "module",
-  "scripts": {
-    "run": "node --loader ts-node/esm src/app.ts"
-  },
-  "dependencies": {
-    "express": "^5.1.0",
-    "hbs": "^4.2.0"
-  },
-  "devDependencies": {
-    "@types/chai": "^5.2.2",
-    "@types/chai-http": "^4.2.4",
-    "@types/express": "^5.0.3",
-    "@types/hbs": "^4.0.5",
-    "@types/mocha": "^10.0.10",
-    "@types/node": "^24.5.2",
-    "@types/sinon": "^17.0.4",
-    "chai": "^6.0.1",
-    "chai-http": "^5.1.2",
-    "mocha": "^11.7.2",
-    "sinon": "^21.0.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
-  }
+	"type": "module",
+	"scripts": {
+		"run": "node --loader ts-node/esm src/app.ts"
+	},
+	"dependencies": {
+		"@types/handlebars": "^4.1.0",
+		"express": "^5.1.0",
+		"handlebars": "^4.7.8",
+		"hbs": "^4.2.0"
+	},
+	"devDependencies": {
+		"@types/chai": "^5.2.2",
+		"@types/chai-http": "^4.2.4",
+		"@types/express": "^5.0.3",
+		"@types/hbs": "^4.0.5",
+		"@types/mocha": "^10.0.10",
+		"@types/node": "^24.5.2",
+		"@types/sinon-chai": "^4.0.0",
+		"chai": "^6.0.1",
+		"chai-http": "^5.1.2",
+		"mocha": "^11.7.2",
+		"sinon": "^21.0.0",
+		"sinon-chai": "^4.0.1",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.9.2"
+	}
 }

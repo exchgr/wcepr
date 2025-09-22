@@ -150,7 +150,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/chai@npm:^5.2.2":
+"@types/chai@npm:*, @types/chai@npm:^5.2.2":
   version: 5.2.2
   resolution: "@types/chai@npm:5.2.2"
   dependencies:
@@ -202,6 +202,15 @@ __metadata:
     "@types/express-serve-static-core": ^5.0.0
     "@types/serve-static": "*"
   checksum: bb6f10c14c8e3cce07f79ee172688aa9592852abd7577b663cd0c2054307f172c2b2b36468c918fed0d4ac359b99695807b384b3da6157dfa79acbac2226b59b
+  languageName: node
+  linkType: hard
+
+"@types/handlebars@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "@types/handlebars@npm:4.1.0"
+  dependencies:
+    handlebars: "*"
+  checksum: 536d9f690c93f5d13fcc4a37ae7dd11f41eb73c47416d56f51623aedc3b573ad9775d6618ede75d7bf9148ac75694e50f8e6ba5773de7d9f040811368c73739f
   languageName: node
   linkType: hard
 
@@ -286,7 +295,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/sinon@npm:^17.0.4":
+"@types/sinon-chai@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@types/sinon-chai@npm:4.0.0"
+  dependencies:
+    "@types/chai": "*"
+    "@types/sinon": "*"
+  checksum: b93f81dbb73e6f7319f3077dece80bbfca4fdd2b512b07f81fb3ee2e1a2e517fc497c6f91880118b7dcce1a281d53bca1e75cb53a5dcef9188df92c3a6405475
+  languageName: node
+  linkType: hard
+
+"@types/sinon@npm:*":
   version: 17.0.4
   resolution: "@types/sinon@npm:17.0.4"
   dependencies:
@@ -1004,6 +1023,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"handlebars@npm:*, handlebars@npm:^4.1.0, handlebars@npm:^4.7.8":
+  version: 4.7.8
+  resolution: "handlebars@npm:4.7.8"
+  dependencies:
+    minimist: ^1.2.5
+    neo-async: ^2.6.2
+    source-map: ^0.6.1
+    uglify-js: ^3.1.4
+    wordwrap: ^1.0.0
+  dependenciesMeta:
+    uglify-js:
+      optional: true
+  bin:
+    handlebars: bin/handlebars
+  checksum: 00e68bb5c183fd7b8b63322e6234b5ac8fbb960d712cb3f25587d559c2951d9642df83c04a1172c918c41bcfc81bfbd7a7718bbce93b893e0135fc99edea93ff
+  languageName: node
+  linkType: hard
+
 "handlebars@npm:4.7.7":
   version: 4.7.7
   resolution: "handlebars@npm:4.7.7"
@@ -1019,24 +1056,6 @@ __metadata:
   bin:
     handlebars: bin/handlebars
   checksum: 1e79a43f5e18d15742977cb987923eab3e2a8f44f2d9d340982bcb69e1735ed049226e534d7c1074eaddaf37e4fb4f471a8adb71cddd5bc8cf3f894241df5cee
-  languageName: node
-  linkType: hard
-
-"handlebars@npm:^4.1.0":
-  version: 4.7.8
-  resolution: "handlebars@npm:4.7.8"
-  dependencies:
-    minimist: ^1.2.5
-    neo-async: ^2.6.2
-    source-map: ^0.6.1
-    uglify-js: ^3.1.4
-    wordwrap: ^1.0.0
-  dependenciesMeta:
-    uglify-js:
-      optional: true
-  bin:
-    handlebars: bin/handlebars
-  checksum: 00e68bb5c183fd7b8b63322e6234b5ac8fbb960d712cb3f25587d559c2951d9642df83c04a1172c918c41bcfc81bfbd7a7718bbce93b893e0135fc99edea93ff
   languageName: node
   linkType: hard
 
@@ -1559,16 +1578,19 @@ __metadata:
     "@types/chai": ^5.2.2
     "@types/chai-http": ^4.2.4
     "@types/express": ^5.0.3
+    "@types/handlebars": ^4.1.0
     "@types/hbs": ^4.0.5
     "@types/mocha": ^10.0.10
     "@types/node": ^24.5.2
-    "@types/sinon": ^17.0.4
+    "@types/sinon-chai": ^4.0.0
     chai: ^6.0.1
     chai-http: ^5.1.2
     express: ^5.1.0
+    handlebars: ^4.7.8
     hbs: ^4.2.0
     mocha: ^11.7.2
     sinon: ^21.0.0
+    sinon-chai: ^4.0.1
     ts-node: ^10.9.2
     typescript: ^5.9.2
   languageName: unknown
@@ -1716,6 +1738,16 @@ __metadata:
   version: 4.1.0
   resolution: "signal-exit@npm:4.1.0"
   checksum: 64c757b498cb8629ffa5f75485340594d2f8189e9b08700e69199069c8e3070fb3e255f7ab873c05dc0b3cec412aea7402e10a5990cb6a050bd33ba062a6c549
+  languageName: node
+  linkType: hard
+
+"sinon-chai@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "sinon-chai@npm:4.0.1"
+  peerDependencies:
+    chai: ^5.0.0 || ^6.0.0
+    sinon: ">=4.0.0"
+  checksum: e2aa656f96b071ad26c9af9ccbeb29ef3b2ae78d2db32fae79de79457815b1d5e4b650ed0808bea0c66e41fdb8fc6f4daaa9e2f7834a6d958988dc0ce0ef9188
   languageName: node
   linkType: hard
 
