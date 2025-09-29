@@ -1,15 +1,14 @@
-{{!#with article}}
-<entry>
-  {{!--    <title>{{title}}</title>
+{{#with article}}
+  <entry>
+    <title>{{title}}</title>
     <author>
       <name>Wikipedia, the free encyclopedia</name>
     </author>
-    <link href="{{ url }}"/>
+    <link href="{{{ url }}}"/>
     <published>{{ publishedAt }}</published>
     <updated>{{ updatedAt }}</updated>
-    <id>{{ url }}</id>
+    <id>{{{ url }}}</id>
     <content xml:lang="en" type="html">{{ body }}</content>
     <category term="news"/>
---}}
-</entry>
-{{!/with}}
+  </entry>
+{{/with}}

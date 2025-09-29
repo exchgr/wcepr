@@ -7,5 +7,7 @@
   <link href="https://en.wikipedia.org/wiki/Portal:Current_events"/>
   <updated>{{updatedAt}}</updated>
   <id>https://en.wikipedia.org/wiki/Portal:Current_events</id>
-  {{> '_entry.xml' }}
+  {{# each articles }}
+    {{> '_entry.xml' article=this }}
+  {{/each}}
 </feed>

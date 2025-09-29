@@ -1,5 +1,12 @@
 import express from "express"
 import hbs from "hbs"
+import path from "path"
+import { fileURLToPath } from "url"
+import { parseArticle } from "./lib/parseArticle.ts"
+
+const __filename = fileURLToPath(import.meta.url)
+
+const __dirname = path.dirname(__filename)
 
 export const app = express()
 const port = parseInt(process.env.EXPRESS_PORT || "3000")
@@ -7,7 +14,7 @@ const port = parseInt(process.env.EXPRESS_PORT || "3000")
 hbs.registerPartials("src/views/partials")
 
 app.set("view engine", "hbs")
-app.set("views", "src/views")
+app.set("views", `${__dirname}/views`)
 
 app.use((req, _res, next) => {
 	console.log(`${new Date().toISOString()} ${req.method} ${req.originalUrl}`)
@@ -24,6 +31,9 @@ app.get("/feed.xml", (req, res) => {
 		{
 			updatedAt: updatedAt.toISOString(),
 			hostname: "http://localhost:3000",
+			articles: [
+				parseArticle("TKTKTK"),
+			],
 		},
 	)
 })

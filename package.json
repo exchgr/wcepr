@@ -7,7 +7,8 @@
 		"@types/handlebars": "^4.1.0",
 		"express": "^5.1.0",
 		"handlebars": "^4.7.8",
-		"hbs": "^4.2.0"
+		"hbs": "^4.2.0",
+		"wikiparser-node": "^1.27.0"
 	},
 	"devDependencies": {
 		"@types/chai": "^5.2.2",
@@ -19,10 +20,12 @@
 		"@types/sinon-chai": "^4.0.0",
 		"chai": "^6.0.1",
 		"chai-http": "^5.1.2",
+		"esmock": "^2.7.3",
 		"mocha": "^11.7.2",
 		"sinon": "^21.0.0",
 		"sinon-chai": "^4.0.1",
 		"ts-node": "^10.9.2",
+		"tsconfig-paths": "^4.2.0",
 		"typescript": "^5.9.2"
 	}
 }

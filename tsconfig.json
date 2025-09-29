@@ -110,4 +110,7 @@
     "allowImportingTsExtensions":true
   },
   "include": ["src/**/*.ts", "tests/**/*.ts"],
+	"ts-node": {
+		"require": ["tsconfig-paths/register"]
+	}
 }
