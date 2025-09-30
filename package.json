@@ -1,20 +1,21 @@
 {
 	"type": "module",
 	"scripts": {
-		"run": "node --loader ts-node/esm src/app.ts"
+		"start": "node --require ts-node/register --loader ts-node/esm src/app.ts"
 	},
 	"dependencies": {
 		"@types/handlebars": "^4.1.0",
 		"express": "^5.1.0",
 		"handlebars": "^4.7.8",
 		"hbs": "^4.2.0",
-		"wikiparser-node": "^1.27.0"
+		"jsdom": "^27.0.0"
 	},
 	"devDependencies": {
 		"@types/chai": "^5.2.2",
 		"@types/chai-http": "^4.2.4",
 		"@types/express": "^5.0.3",
 		"@types/hbs": "^4.0.5",
+		"@types/jsdom": "^27.0.0",
 		"@types/mocha": "^10.0.10",
 		"@types/node": "^24.5.2",
 		"@types/sinon-chai": "^4.0.0",
@@ -22,10 +23,10 @@
 		"chai-http": "^5.1.2",
 		"esmock": "^2.7.3",
 		"mocha": "^11.7.2",
+		"mockdate": "^3.0.5",
 		"sinon": "^21.0.0",
 		"sinon-chai": "^4.0.1",
 		"ts-node": "^10.9.2",
-		"tsconfig-paths": "^4.2.0",
 		"typescript": "^5.9.2"
 	}
 }

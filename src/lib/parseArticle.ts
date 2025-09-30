@@ -1,24 +1,33 @@
-import Parser from "wikiparser-node"
-import { getProperty } from "../../src/lib/getProperty.ts"
+import { JSDOM } from "jsdom"
+import type { ParsedArticle } from "src/types/parsedArticle.js"
+import type { MwApiResponse } from "../types/mwApiResponse.ts"
 
-export const parseArticle = (wikitext: string) => {
-	const ast = Parser.parse(wikitext).children[0]
+export const parseArticle = (mwApiResponse: MwApiResponse): ParsedArticle => {
+	const separator = " – "
 
-	const date = new Date(
-		parseInt(getProperty(ast, "year")),
-		parseInt(getProperty(ast, "month")) - 1,
-		parseInt(getProperty(ast, "day")),
+	const title = mwApiResponse.parse.title.replace(/Portal:/, "").replace(
+		/\//,
+		separator,
 	)
 
-	const year = date.toLocaleDateString("en-US", {year: "numeric"})
-	const month = date.toLocaleDateString("en-US", {month: "long"})
-	const day = date.toLocaleDateString("en-US", {day: "numeric"})
+	const date = new Date(
+		title.split(separator)[1],
+	)
 
 	return {
-		url: `https://en.wikipedia.org/w/index.php?title=Portal:Current_events/${year}_${month}_${day}`,
+		url: `https://en.wikipedia.org/wiki/Portal:Current_events/${
+			date.toLocaleDateString("en-US", {year: "numeric"})
+		}_${
+			date.toLocaleDateString("en-US", {month: "long"})
+		}_${
+			date.toLocaleDateString("en-US", {day: "numeric"})
+		}`,
 		publishedAt: date.toISOString(),
 		updatedAt: date.toISOString(),
-		title: `Current events — ${year} ${month} ${day}`,
-		body: getProperty(ast, "content"),
+		title,
+		body: new JSDOM(mwApiResponse.parse.text["*"])
+			.window.document.body.querySelector(
+				".current-events-content.description",
+			)?.innerHTML,
 	}
 }

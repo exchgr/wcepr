@@ -2,6 +2,7 @@ import express from "express"
 import hbs from "hbs"
 import path from "path"
 import { fileURLToPath } from "url"
+import { fetchArticle } from "./lib/fetchArticle.ts"
 import { parseArticle } from "./lib/parseArticle.ts"
 
 const __filename = fileURLToPath(import.meta.url)
@@ -21,7 +22,7 @@ app.use((req, _res, next) => {
 	next()
 })
 
-app.get("/feed.xml", (req, res) => {
+app.get("/feed.xml", async (req, res) => {
 	const updatedAt = new Date()
 	updatedAt.setHours(0, 0, 0, 0)
 
@@ -32,12 +33,16 @@ app.get("/feed.xml", (req, res) => {
 			updatedAt: updatedAt.toISOString(),
 			hostname: "http://localhost:3000",
 			articles: [
-				parseArticle("TKTKTK"),
+				parseArticle(await fetchArticle(updatedAt)),
 			],
 		},
 	)
 })
 
-app.listen(port, () => {
+app.listen(port, (error) => {
+	if (error) {
+		console.error(error)
+	}
+
 	console.log(`Listening on port ${port}`)
 })
