@@ -32,8 +32,11 @@ app.get("/feed.xml", async (req, res) => {
 			today.setDate(updatedAt.getDate() - num)
 			return today
 		})
-	const articles = await Promise.all(daysToFetch.map(async (dayToFetch) =>
-		parseArticle(await fetchArticle(dayToFetch))),
+
+	const articles = await Promise.all(
+		daysToFetch.map(async (dayToFetch) =>
+			parseArticle(await fetchArticle(dayToFetch)),
+		),
 	)
 
 	res.setHeader("Content-Type", "application/rss+xml")
