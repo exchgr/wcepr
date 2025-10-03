@@ -26,7 +26,7 @@ app.use((req, _res, next) => {
 app.get("/feed.xml", async (req, res) => {
 	const updatedAt = new Date()
 
-	const daysToFetch = arrayRange(0, 14)
+	const daysToFetch = arrayRange(1, 15)
 		.map((num) => {
 			const today = new Date()
 			today.setDate(updatedAt.getDate() - num)
