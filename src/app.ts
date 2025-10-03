@@ -24,14 +24,15 @@ app.use((req, _res, next) => {
 })
 
 app.get("/feed.xml", async (req, res) => {
-	const updatedAt = new Date()
+	const now = new Date()
 
 	const daysToFetch = arrayRange(1, 15)
-		.map((num) => {
-			const day = new Date()
-			day.setDate(updatedAt.getDate() - num)
-			return day
-		})
+		.map((num) =>
+			new Date(
+				now.getFullYear(),
+				now.getMonth(),
+				now.getDate() - num,
+			))
 
 	const articles = await Promise.all(
 		daysToFetch.map(async (dayToFetch) =>
@@ -43,7 +44,7 @@ app.get("/feed.xml", async (req, res) => {
 	res.render(
 		"feed.xml.hbs",
 		{
-			updatedAt: updatedAt.toISOString(),
+			updatedAt: now.toISOString(),
 			hostname: "http://localhost:3000",
 			articles,
 		},
