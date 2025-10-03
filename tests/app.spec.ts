@@ -12,7 +12,7 @@ describe("app", () => {
 		it(
 			"should render the last 14 days of current events excluding today",
 			async () => {
-				const now = new Date(2025, 8, 30, 13, 6, 39)
+				const now = new Date(Date.UTC(2025, 8, 30, 0, 0, 0))
 				MockDate.set(now)
 
 				const {server} = await esmock("../src/app.ts", {

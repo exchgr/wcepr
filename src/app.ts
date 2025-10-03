@@ -29,9 +29,9 @@ app.get("/feed.xml", async (req, res) => {
 	const daysToFetch = arrayRange(1, 15)
 		.map((num) =>
 			new Date(
-				now.getFullYear(),
-				now.getMonth(),
-				now.getDate() - num,
+				now.getUTCFullYear(),
+				now.getUTCMonth(),
+				now.getUTCDate() - num,
 			))
 
 	const articles = await Promise.all(
