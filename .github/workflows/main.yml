@@ -4,7 +4,46 @@ on:
   push:
     branches:
       - 'main'
+env:
+  APP_NAME: ${{ vars.APP_NAME }}
+  AWS_REGION: ${{ vars.AWS_REGION }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+  CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+  WCEPR_CNAME: ${{ vars.WCEPR_CNAME }}
 jobs:
+  deploy-infra:
+    name: Deploy infra
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: terraform
+    steps:
+      - name: "checkout"
+        uses: actions/checkout@v4
+      - name: "setup opentofu"
+        uses: opentofu/setup-opentofu@v1
+      - name: "authenticate with aws"
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ${{ env.AWS_REGION }}
+          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+      - name: "cache terraform state"
+        id: cache
+        uses: actions/cache@v4
+        with:
+          key: ${{ hashFiles('terraform/**') }}
+          path: |
+            terraform/.terraform
+            terraform/.terraform.lock.hcl
+      - name: "tofu init"
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: tofu init -backend-config="bucket=$APP_NAME-tofu" -backend-config="key=terraform-state" -backend-config="region=$AWS_REGION"
+      - name: "tofu apply"
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: tofu apply -auto-approve
   test:
     name: Run tests
     runs-on: ubuntu-latest
