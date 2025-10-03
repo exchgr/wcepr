@@ -12,8 +12,8 @@ describe("app", () => {
 		it(
 			"should render the last 14 days of current events excluding today",
 			async () => {
-				const articleDate = new Date(2025, 8, 30)
-				MockDate.set(articleDate)
+				const now = new Date(2025, 8, 30, 13, 6, 39)
+				MockDate.set(now)
 
 				const {server} = await esmock("../src/app.ts", {
 					"../src/lib/fetchArticle.ts": {
@@ -47,7 +47,7 @@ describe("app", () => {
 				const entries = arrayRange(16, 30).reverse().map(
 					(day) => {
 						const year = 2025
-						const date = new Date(year, 8, day)
+						const date = new Date(Date.UTC(year, 8, day, 23, 59, 0))
 						const month = date.toLocaleDateString("en-US", {month: "long"})
 
 						return `      <entry>
@@ -57,7 +57,7 @@ describe("app", () => {
         </author>
         <link href="https://en.wikipedia.org/wiki/Portal:Current_events/${year}_${month}_${day}"/>
         <published>${date.toISOString()}</published>
-        <updated>${date.toISOString()}</updated>
+        <updated>${now.toISOString()}</updated>
         <id>https://en.wikipedia.org/wiki/Portal:Current_events/${year}_${month}_${day}</id>
         <content xml:lang="en" type="html">hi</content>
         <category term="news"/>
@@ -76,7 +76,7 @@ describe("app", () => {
   <subtitle>From Wikipedia, the free encyclopedia</subtitle>
   <link href="http://localhost:3000/feed.xml" rel="self"/>
   <link href="https://en.wikipedia.org/wiki/Portal:Current_events"/>
-  <updated>2025-09-30T04:00:00.000Z</updated>
+  <updated>${now.toISOString()}</updated>
   <id>https://en.wikipedia.org/wiki/Portal:Current_events</id>
 ${entries}</feed>
 `)

@@ -1,6 +1,6 @@
 import { JSDOM } from "jsdom"
-import type { ParsedArticle } from "src/types/parsedArticle.js"
 import type { MwApiResponse } from "../types/mwApiResponse.ts"
+import type { ParsedArticle } from "../types/parsedArticle.ts"
 
 export const parseArticle = (mwApiResponse: MwApiResponse): ParsedArticle => {
 	const separator = " – "
@@ -14,6 +14,17 @@ export const parseArticle = (mwApiResponse: MwApiResponse): ParsedArticle => {
 		title.split(separator)[1],
 	)
 
+	const datePreMidnight = new Date(Date.UTC(
+		date.getUTCFullYear(),
+		date.getUTCMonth(),
+		date.getUTCDate(),
+		23,
+		59,
+		0,
+	))
+
+	const now = new Date()
+
 	return {
 		url: `https://en.wikipedia.org/wiki/Portal:Current_events/${
 			date.toLocaleDateString("en-US", {year: "numeric"})
@@ -22,8 +33,8 @@ export const parseArticle = (mwApiResponse: MwApiResponse): ParsedArticle => {
 		}_${
 			date.toLocaleDateString("en-US", {day: "numeric"})
 		}`,
-		publishedAt: date.toISOString(),
-		updatedAt: date.toISOString(),
+		publishedAt: datePreMidnight.toISOString(),
+		updatedAt: now.toISOString(),
 		title,
 		body: new JSDOM(mwApiResponse.parse.text["*"])
 			.window.document.body.querySelector(
