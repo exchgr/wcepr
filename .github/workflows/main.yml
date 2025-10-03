@@ -11,7 +11,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
   CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
-  WCEPR_CNAME: ${{ vars.WCEPR_CNAME }}
+  WCEPR_AAAA: ${{ vars.WCEPR_AAAA }}
 jobs:
   deploy-infra:
     name: Deploy infra
