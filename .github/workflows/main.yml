@@ -5,10 +5,31 @@ on:
     branches:
       - 'main'
 jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    container:
+      image: node:22-alpine
+    steps:
+      - name: "checkout"
+        uses: actions/checkout@v4
+      - name: "cache packages"
+        id: cache-packages
+        uses: actions/cache@v4
+        with:
+          key: ${{ hashFiles('package.json') }}
+          path: |
+            .yarn/cache
+            node_modules
+      - name: yarn
+        if: steps.cache-packages.outputs.cache-hit != 'true'
+        run: yarn
+      - name: run tests
+        run: yarn test
   deploy:
     name: Deploy app
     runs-on: ubuntu-latest
-    #    needs: deploy-infra
+    needs: test
     concurrency: deploy-group    # optional: ensure only one action runs at a time
     steps:
       - uses: actions/checkout@v4
