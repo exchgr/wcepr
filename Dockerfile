@@ -7,7 +7,6 @@ RUN \
 WORKDIR /app
 
 COPY yarn.lock package.json .yarnrc.yml tsconfig.json ./
-COPY .yarn .yarn
 
 RUN yarn set version berry
 RUN \
@@ -15,6 +14,8 @@ RUN \
 		yarn
 
 FROM node:22-alpine
+
+ENV NODE_ENV=production
 
 WORKDIR /app
 
