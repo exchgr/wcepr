@@ -23,6 +23,10 @@ app.use((req, _res, next) => {
 	next()
 })
 
+app.get("/", (req, res) => {
+	res.render("index.html.hbs")
+})
+
 app.get("/feed.xml", async (req, res) => {
 	const now = new Date()
 

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Wikipedia Current Events Portal RSS</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="alternate"
+				type="application/rss+xml"
+				href="/feed.xml"
+				title="Wikipedia Current Events">
+	<meta property="og:site_name" content="Wikipedia Current Events Portal RSS">
+	<meta property="og:title" content="Wikipedia Current Events Portal RSS">
+	<meta property="og:url" content="https://wcepr.exch.gr/">
+	<meta property="og:image"
+				content="https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg">
+	<meta property="og:description"
+				content="An RSS feed that serves news from the Wikipedia current events portal, updated daily">
+	<meta property="og:type" content="website">
+	<meta name="fediverse:creator" content="@exchgr@mastodon.world"/>
+</head>
+<body>
+<h1>Wikipedia Current Events Portal RSS</h1>
+<p>by <a rel="author" href="https://exch.gr/">Elle Mundy</a></p>
+<p>This feed fetches the last 14
+	days of news from the <a
+		href="https://en.wikipedia.org/wiki/Portal:Current_events">Wikipedia Current
+		Events Portal</a>
+	and renders them in a clean, easy-to-read, UTF-8 encoded RSS feed. I created
+	this because
+	<a
+		href="https://patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/">the
+		one I was using</a>
+	keeps going out of service, and I couldn't figure out how to host my own copy
+	of <a href="https://gitlab.com/clokep/to-rss/">it</a> due to my unfamiliarity
+	with
+	Python. Subscribe in your favorite RSS reader by clicking the link below.
+</p>
+<p class="subscribe"><a href="/feed.xml">Subscribe</a></p>
+<p>
+	If that doesn't work, you can copy either this site's URL or the feed's URL
+	into your RSS reader, and it should get picked up either way.
+</p>
+<h2>Support</h2>
+<p>Do you want to support this project with a donation? Too bad! I'm just simply
+	not gonna let you. Please
+	<a
+		href="https://donate.wikimedia.org/w/index.php?title=Special:LandingPage&country=US&uselang=en&wmf_medium=spontaneous&wmf_source=fr-redir&wmf_campaign=spontaneous">
+		donate to the Wikimedia Foundation</a> instead.</p>
+<h2>Contributing</h2>
+<p>You can find the code behind this feed <a
+	href="https://github.com/exchgr/wcepr/">here</a>.</p>
+<p>
+	Unfortunately, I don't have much time to work on this, so if you encounter any
+	bugs, feel free to fork and fix, and I'll try to review and merge any PRs when
+	I get a spare moment. But don't expect any timely resolution to issues. This
+	is a free (as in both freedom and lunch) project with zero funding, so please
+	act accordingly.
+</p>
+<h2>Terms of use</h2>
+<p>All content in this feed should be treated as covered by the <a
+	href="https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use/en">Wikimedia
+	Foundation terms of use</a>.</p>
+
+<p>Disclaimer: I am not affiliated with Wikipedia in any way. I do not own,
+	produce, or moderate the content served on this feed. If you spot an issue
+	with it, please take it up with the portal's <a
+		href="https://en.wikipedia.org/wiki/Portal_talk:Current_events">talk
+		page</a>.
+</p>
+
+<p>
+	I explicitly deny permission to train LLMs on the code powering this server. I
+	reserve the right to close and/or ignore issue and PR submissions that seem to
+	be LLM-generated in any way.
+</p>
+</body>
+</html>
